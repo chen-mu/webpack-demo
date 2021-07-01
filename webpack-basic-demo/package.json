@@ -1,0 +1,17 @@
+{
+  "name": "dive-into-webpack",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "webpack && node server.js"
+  },
+  "dependencies": {
+    "clean-webpack-plugin": "^4.0.0-alpha.0",
+    "html-webpack-plugin": "4.5.2",
+    "webpack-dev-middleware": "^5.0.0",
+    "webpack-dev-server": "3.1.14"
+  },
+  "devDependencies": {
+    "webpack": "4.29.0",
+    "webpack-cli": "3.2.1"
+  }
+}
