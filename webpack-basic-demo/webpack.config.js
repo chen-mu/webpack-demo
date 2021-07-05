@@ -21,7 +21,7 @@ module.exports = {
 		// 必须配置的选项，服务启动的目录，默认为根目录
 		contentBase: './dist',
 		// 使用热加载时需要设置为 true
-		hot: true,
+		hot: false,
 		inline: true,
 		open: true
 	},
@@ -38,26 +38,6 @@ module.exports = {
 		})
 	],
 	module: {
-		rules: [
-			{
-				test: /\.js$/,
-				use: ['babel-loader?cacheDirectory'],
-				include: path.resolve(__dirname, 'src')
-			},
-			{
-				// 命中 SCSS 文件
-				test: /\.scss$/,
-				// 使用一组 Loader 去处理 SCSS 文件。
-				// 处理顺序为从后到前，即先交给 sass-loader 处理，再把结果交给 css-loader 最后再给 style-loader。
-				use: ['style-loader', 'css-loader', 'sass-loader'],
-				// 排除 node_modules 目录下的文件
-				exclude: path.resolve(__dirname, 'node_modules')
-			},
-			{
-				// 对非文本文件采用 file-loader 加载
-				test: /\.(gif|png|jpe?g|eot|woff|ttf|svg|pdf)$/,
-				use: ['file-loader']
-			}
-		]
+		rules: [{ test: /\.js|jsx$/, use: 'babel-loader', exclude: /node_modules/ }]
 	}
 }

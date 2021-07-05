@@ -1,13 +1,15 @@
 import React, { Component } from 'react'
+import ReactDOM from 'react-dom'
 
-class App extends Component {
-	render() {
-		return (
-			<div className='App'>
-				<h1> Hello</h1>
-			</div>
-		)
-	}
-}
+const element = <h1>Hello,woddwq3ld!</h1>
+ReactDOM.render(element, document.getElementById('root'))
 
-export default App
+// function component() {
+// 	var element = document.createElement('div')
+
+// 	element.innerHTML = 'Hello World'
+
+// 	return element
+// }
+
+// document.body.appendChild(component())
