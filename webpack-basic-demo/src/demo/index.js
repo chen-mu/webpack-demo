@@ -1,15 +1,23 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
+import Routers from './routes'
+import Demo from './page1/index'
+import { Router, Route, hashHistory, IndexRoute } from 'react-router'
+import { BrowserRouter } from 'react-router-dom'
 
-const element = <h1>Hello,woddwq3ld!</h1>
-ReactDOM.render(element, document.getElementById('root'))
+import './index.css'
 
-// function component() {
-// 	var element = document.createElement('div')
+console.log('Routers===>', Routers)
 
-// 	element.innerHTML = 'Hello World'
-
-// 	return element
-// }
-
-// document.body.appendChild(component())
+// const element =
+const Root = () => {
+	const pathname = location.pathname
+	return (
+		<div>
+			<BrowserRouter basename='/'>
+				<Route path={pathname} component={Demo}></Route>
+			</BrowserRouter>
+		</div>
+	)
+}
+ReactDOM.render(Root(), document.getElementById('root'))

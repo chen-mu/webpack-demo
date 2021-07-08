@@ -7,28 +7,22 @@ module.exports = {
 	// JS 执行入口文件
 	mode: 'development',
 	entry: {
-		main: './src/demo/index.js'
+		main: ['webpack-hot-middleware/client?reload=true', './src/demo/index.js']
 		// main1: './main1.js'
 	},
 	output: {
 		// 把所有依赖的模块合并输出到一个 bundle.js 文件
-		filename: '[name]__[hash:8].js',
+		filename: '[name].js',
 		// 输出文件都放到 dist 目录下
-		path: path.resolve(__dirname, './dist')
-	},
-
-	devServer: {
-		// 必须配置的选项，服务启动的目录，默认为根目录
-		contentBase: './dist',
-		// 使用热加载时需要设置为 true
-		hot: false,
-		inline: true,
-		open: true
+		path: path.resolve(__dirname, './dist'),
+		publicPath: 'http://localhost:3000/dist/',
+		chunkFilename: '[name]_[chunkhash:8]_chunk.js'
 	},
 
 	plugins: [
 		// new CleanWebpackPlugin(),
 		new webpack.HotModuleReplacementPlugin(), //热更新插件
+		// new webpack.optimize.OccurenceOrderPlugin(),
 		new HtmlWebpackPlugin({
 			title: 'main',
 			template: './src/demo/index.html',
@@ -38,6 +32,19 @@ module.exports = {
 		})
 	],
 	module: {
-		rules: [{ test: /\.js|jsx$/, use: 'babel-loader', exclude: /node_modules/ }]
+		rules: [
+			{ test: /\.js|jsx$/, use: 'babel-loader', exclude: /node_modules/ },
+			// 新增css加载规则
+			{
+				test: /.css$/,
+				use: ['style-loader', 'css-loader']
+			},
+
+			// less的解释其实就是在css解析的基础上加上 less-loader 即可！
+			{
+				test: /.less$/,
+				use: ['style-loader', 'css-loader', 'less-loader']
+			}
+		]
 	}
 }
