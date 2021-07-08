@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, Suspense } from 'react'
 import ReactDOM from 'react-dom'
 import Routers from './routes'
 import Demo from './page1/index'
@@ -14,9 +14,11 @@ const Root = () => {
 	const pathname = location.pathname
 	return (
 		<div>
-			<BrowserRouter basename='/'>
-				<Route path={pathname} component={Demo}></Route>
-			</BrowserRouter>
+			<Suspense fallback={<div>Loading...</div>}>
+				<BrowserRouter basename='/'>
+					<Route path={pathname} component={Routers[0].component}></Route>
+				</BrowserRouter>
+			</Suspense>
 		</div>
 	)
 }

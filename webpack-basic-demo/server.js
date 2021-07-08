@@ -28,7 +28,7 @@ app.use(
 
 app.use(express.static('dist'))
 
-app.get(/\/demo/g, function (req, res, next) {
+app.get(/\/demo/, function (req, res, next) {
 	res.sendFile('dist/demo.html', { root: __dirname })
 })
 
