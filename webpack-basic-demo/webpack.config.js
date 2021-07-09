@@ -6,6 +6,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 module.exports = {
 	// JS 执行入口文件
 	mode: 'development',
+	devtool: 'eval-cheap-module-source-map', // 开发环境 devtool: hidden-source-map
 	entry: {
 		main: ['webpack-hot-middleware/client?reload=true', './src/demo/index.js']
 		// main1: './main1.js'
@@ -22,7 +23,6 @@ module.exports = {
 	plugins: [
 		// new CleanWebpackPlugin(),
 		new webpack.HotModuleReplacementPlugin(), //热更新插件
-		// new webpack.optimize.OccurenceOrderPlugin(),
 		new HtmlWebpackPlugin({
 			title: 'main',
 			template: './src/demo/index.html',
@@ -31,18 +31,23 @@ module.exports = {
 			inject: 'body'
 		})
 	],
+
+	// 设置别名
+	resolve: {
+		alias: {
+			'@/utils': path.resolve(__dirname, 'utils/index.js')
+		}
+	},
+
 	module: {
 		rules: [
 			{ test: /\.js|jsx$/, use: 'babel-loader', exclude: /node_modules/ },
-			// 新增css加载规则
-			{
-				test: /.css$/,
-				use: ['style-loader', 'css-loader']
-			},
 
 			// less的解释其实就是在css解析的基础上加上 less-loader 即可！
+
 			{
-				test: /.less$/,
+				test: /\.(le|c)ss$/,
+				exclude: /node_modules/,
 				use: ['style-loader', 'css-loader', 'less-loader']
 			}
 		]

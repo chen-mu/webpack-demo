@@ -12,11 +12,12 @@ console.log('Routers===>', Routers)
 // const element =
 const Root = () => {
 	const pathname = location.pathname
+	const currRoute = Routers.filter((item) => item.path === location.pathname)
 	return (
 		<div>
 			<Suspense fallback={<div>Loading...</div>}>
 				<BrowserRouter basename='/'>
-					<Route path={pathname} component={Routers[0].component}></Route>
+					<Route component={currRoute[0].component}></Route>
 				</BrowserRouter>
 			</Suspense>
 		</div>
