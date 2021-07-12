@@ -2,8 +2,11 @@
   "name": "dive-into-webpack",
   "version": "1.0.0",
   "scripts": {
-    "start": "set NODE_ENV=development && webpack && node server.js",
-    "build": "set NODE_ENV=production && webpack && node server.js"
+    "start": "webpack --config build/webpack.dev.js && node server.js",
+    "lc": "webpack --config build/webpack.pro.js && node server.js",
+    "build": "node server.js",
+    "test": "cross-env NODE_ENV=production node test.js",
+    "demo": "webpack && node server.js"
   },
   "dependencies": {
     "clean-webpack-plugin": "^4.0.0-alpha.0",

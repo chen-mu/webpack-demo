@@ -5,17 +5,16 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
 	// JS 执行入口文件
-	mode: 'development',
 	devtool: 'eval-cheap-module-source-map', // 开发环境 devtool: hidden-source-map
 	entry: {
 		main: ['webpack-hot-middleware/client?reload=true', './src/demo/index.js']
-		// main1: './main1.js'
+
 	},
 	output: {
 		// 把所有依赖的模块合并输出到一个 bundle.js 文件
 		filename: '[name].js',
 		// 输出文件都放到 dist 目录下
-		path: path.resolve(__dirname, './dist'),
+		path: path.resolve(__dirname, '../dist'),
 		publicPath: 'http://localhost:3000/dist/',
 		chunkFilename: '[name]_[chunkhash:8]_chunk.js'
 	},

@@ -10,6 +10,9 @@ module.exports = merge(baseConfig, {
 
 	plugins: [
 		// new CleanWebpackPlugin(),
-		new webpack.HotModuleReplacementPlugin() //热更新插件
+		new webpack.HotModuleReplacementPlugin(), //热更新插件
+		new webpack.DefinePlugin({
+			env: 'development'
+		})
 	]
 })
