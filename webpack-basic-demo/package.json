@@ -2,10 +2,10 @@
   "name": "dive-into-webpack",
   "version": "1.0.0",
   "scripts": {
-    "start": "webpack --config build/webpack.dev.js && node server.js",
-    "lc": "webpack --config build/webpack.pro.js && node server.js",
-    "build": "node server.js",
-    "test": "cross-env NODE_ENV=production node test.js",
+    "start": "webpack --config build/webpack.dev.js && cross-env NODE_ENV=development  node server.js",
+    "lc": "webpack --config build/webpack.pro.js ",
+    "test": "cross-env NODE_ENV=production",
+    "testlc": " node test.js",
     "demo": "webpack && node server.js"
   },
   "dependencies": {

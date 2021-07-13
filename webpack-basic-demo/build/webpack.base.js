@@ -8,7 +8,6 @@ module.exports = {
 	devtool: 'eval-cheap-module-source-map', // 开发环境 devtool: hidden-source-map
 	entry: {
 		main: ['webpack-hot-middleware/client?reload=true', './src/demo/index.js']
-
 	},
 	output: {
 		// 把所有依赖的模块合并输出到一个 bundle.js 文件
@@ -23,7 +22,6 @@ module.exports = {
 		// new CleanWebpackPlugin(),
 		// new webpack.HotModuleReplacementPlugin(), //热更新插件
 		new HtmlWebpackPlugin({
-			title: 'main',
 			template: './src/demo/index.html',
 			filename: 'demo.html',
 			chunks: ['main'],

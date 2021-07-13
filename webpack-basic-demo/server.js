@@ -7,9 +7,7 @@ const app = express()
 // Step 1: 引入 webpack 的配置文件和 生成 webpack 的编译器
 const webpack = require('webpack')
 // const webpackConfig = require('./webpack.config')
-debugger
-console.log('process.env.NODE_ENV1112222==>', process.env.NODE_ENV)
-
+console.log('process.env.NODE_ENV111==>', process.env.NODE_ENV)
 // Step 2: 将编译器挂载给 webpack dev middleware
 if (process.env.NODE_ENV !== 'production') {
 	const webpackConfig = require('./build/webpack.dev.js')
